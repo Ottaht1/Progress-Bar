@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+:root {
+  --bg-color: lavender;
+  --primary-color: slateblue;
+  --secondary-color: darkslateblue;
+  --text-color: lavenderblush;
+  --disabled-color: rgb(109, 104, 138);
+  --progress-bg: rgb(196, 191, 227);
+  --circle-border: darkorchid;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: "Muli", sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress-container {
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 350px;
+  width: 100%;
+}
+
+.progress-container::before {
+  content: "";
+  background-color: var(--progress-bg);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  transform: translateY(-50%);
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.circles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid var(--circle-border);
+  transition: background-color 0.4s ease;
+}
+
+.circle.active {
+  background-color: var(--primary-color);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 8px 30px;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:disabled {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
